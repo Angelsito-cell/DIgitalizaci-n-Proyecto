@@ -1,19 +1,15 @@
+import sys
+print(sys.path)
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth, inventory, prediction
-
-
-# Inicialización de FastAPI
-from fastapi import FastAPI 
-from fastapi.middleware.cors import CORSMiddleware
-
+from app.routers import auth, inventory, prediction
 app = FastAPI(
     title="Smart Inventory API",
     description="API para gestión de inventario inteligente",
     version="1.0.0"
 )
 
-# CORS
+# Configuración CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

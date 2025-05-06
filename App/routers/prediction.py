@@ -1,3 +1,4 @@
+from statistics import LinearRegression
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 import pandas as pd
