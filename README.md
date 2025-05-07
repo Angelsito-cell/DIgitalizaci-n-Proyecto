@@ -122,3 +122,5 @@ Si no se usara la nube, se podría integrar mediante:
 - **Cloud Computing** (AWS S3 para almacenamiento seguro).
 
 Estas tecnologías permiten una mejor **automatización, predicción y seguridad** en la gestión del inventario.
+
+OU YEA
