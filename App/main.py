@@ -3,6 +3,9 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import auth, inventory, prediction
 import logging
+from .database import engine, Base
+Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(
     title="Smart Inventory Manager API",
