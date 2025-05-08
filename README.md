@@ -1,6 +1,6 @@
 # Smart Inventory Manager
 
-## Comando para iniciar el server:
+## Comando para iniciar el server: uvicorn app.main:app --reload
 ## ACCEDE A LA API: http://127.0.0.1:8000/docs
 
 ## Descripción del Proyecto
