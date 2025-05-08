@@ -1,5 +1,8 @@
 # Smart Inventory Manager
 
+## Comando para iniciar el server:
+## ACCEDE A LA API: http://127.0.0.1:8000/docs
+
 ## Descripción del Proyecto
 
 **Smart Inventory Manager** es un sistema inteligente de gestión de inventarios basado en tecnologías IoT y computación en la nube. Su objetivo es optimizar la administración de inventarios mediante la automatización del escaneo de productos y el uso de modelos predictivos de Machine Learning para prever la demanda futura.
