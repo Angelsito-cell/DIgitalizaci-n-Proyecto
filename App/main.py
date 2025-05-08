@@ -1,15 +1,16 @@
-import sys
-print(sys.path)
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import auth, inventory, prediction
+from .routers import auth, inventory, prediction
+import logging
+
 app = FastAPI(
-    title="Smart Inventory API",
-    description="API para gestión de inventario inteligente",
-    version="1.0.0"
+    title="Smart Inventory Manager API",
+    description="API REST para gestión de inventario con IoT, nube y ML",
+    version="1.0.0",
 )
 
-# Configuración CORS
+# Configurar CORS si es necesario
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,11 +18,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Routers
+# Middleware global de captura de errores
+@app.middleware("http")
+async def catch_exceptions(request: Request, call_next):
+    try:
+        return await call_next(request)
+    except Exception as exc:
+        # Loguear la excepción completa en consola
+        logging.exception("Error en request %s %s", request.method, request.url)
+        # Devolver detalle en JSON
+        return JSONResponse(
+            status_code=500,
+            content={"detail": str(exc)}
+        )
+
+# Incluir routers
 app.include_router(auth.router)
 app.include_router(inventory.router)
 app.include_router(prediction.router)
 
 @app.get("/", tags=["Root"])
 def read_root():
-    return {"message": "Bienvenido al Smart Inventory Manager"}
+    return {"message": "Bienvenido al Smart Inventory Manager API"}
