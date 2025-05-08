@@ -1,0 +1,4 @@
+# Ignorar archivos ZIP grandes
+*.zip
+# Si usas releases manuales
+/release-*.zip
